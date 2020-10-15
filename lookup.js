@@ -8,6 +8,7 @@ const path = require('path');
 // import { Reader } from '@maxmind/geoip2-node';
 
 var ip = process.argv[2];
+if (ip){
 if (ip.toLowerCase() === "--configure"){
     if (!fs.existsSync('./data')){
         fs.mkdirSync('./data');
@@ -48,3 +49,5 @@ else{
         else{ console.log("Application not configured.");}    }
     else{ console.log("Application not configured.");}
 }
+}
+else{console.log("There's nothing for me to do!");}
