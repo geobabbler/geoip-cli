@@ -41,7 +41,7 @@ else{
             var state = "UNK";
             if (response.subdivisions[0]){
                 state = response.subdivisions[0].isoCode;
-            } // response.city.names.en; //response.subdivisions[0].isoCode;
+            }
             console.log(ip + "," + country + "," + city + "," + state);
             });
         }
