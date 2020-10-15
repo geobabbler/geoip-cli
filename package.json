@@ -4,6 +4,7 @@
   "description": "simple cli wrapper for geolite",
   "bin": "./lookup.js",
   "main": "lookup.js",
+  "repository": "https://github.com/geobabbler/geoip-cli.git",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
