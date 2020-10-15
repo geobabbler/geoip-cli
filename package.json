@@ -1,0 +1,15 @@
+{
+  "name": "geoip",
+  "version": "1.0.0",
+  "description": "simple cli wrapper for geolite",
+  "bin": "./lookup.js",
+  "main": "lookup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bill Dollins",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "@maxmind/geoip2-node": "^1.6.0"
+  }
+}
