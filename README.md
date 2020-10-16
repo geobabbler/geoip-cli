@@ -1,14 +1,25 @@
-geoip-cli
-============
+# iploc
 
-A simple CLI app to perform geoip lookup at the console.
+A simple CLI app to perform geoip lookup at the console. Supports either IPv4 or IPv6.
+
+## installation
+
+npm install -g iploc
+
+## usage
 
 There are currently two options for running the app:
 
---configure /path/to/mmdb/file  - This option allows you to initially configure the app with the mmdb file you downloaded from MaxMind.
+### configure
 
-Configure example: iploc --configure ../geolite.mmdb (The configuration will resolve relative paths to absolute.)
+This option allows you to initially configure the app with the mmdb file you downloaded from MaxMind. The configuration will resolve relative paths to absolute.
 
-IP address - This option looks up the IP address you provide.
+**Usage:** iploc --configure /path/to/mmdb/file
 
-IP adress example: iploc 8.8.8.8
+**Example:** iploc --configure ../geolite.mmdb
+
+### lookup
+
+This option looks up the IP address you provide. Simply provide the IP address, there is not command line argument.
+
+**Example:** iploc 8.8.8.8
