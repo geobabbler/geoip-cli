@@ -29,20 +29,28 @@ else{
         var cfg = fs.readFileSync('./data/config.txt', 'UTF-8');
         if (fs.existsSync(cfg)){
             Reader.open(cfg).then(reader => {
-            const response = reader.city(ip);
-            var country = "UNK";
-            if (response.country){
-                country = response.country.isoCode;
-            } 
-            var city = "Unknown";
-            if (response.city.names){
-                city = response.city.names.en;
-            }
-            var state = "UNK";
-            if (response.subdivisions[0]){
-                state = response.subdivisions[0].isoCode;
-            }
-            console.log(ip + "," + country + "," + city + "," + state);
+                const response = reader.city(ip);
+                var output = [];
+                var country = "UNK";
+                var latitude = 0;
+                var longitude = 0;
+                if (response.location){
+                    latitude = response.location.latitude;
+                    longitude = response.location.longitude;
+                }
+                if (response.country){
+                    country = response.country.isoCode;
+                } 
+                var city = "Unknown";
+                if (response.city.names){
+                    city = response.city.names.en;
+                }
+                var state = "UNK";
+                if (response.subdivisions[0]){
+                    state = response.subdivisions[0].isoCode;
+                }
+                output.push(ip, latitude, longitude, country, state, city);
+                console.log(output.join(","));
             });
         }
         else{ console.log("Application not configured.");}    }
