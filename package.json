@@ -11,6 +11,7 @@
   "author": "Bill Dollins <bill@geomusings.com>",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "@maxmind/geoip2-node": "^1.6.0"
+    "@maxmind/geoip2-node": "^1.6.0",
+    "yargs": "^16.1.0"
   }
 }

@@ -1,6 +1,6 @@
 # iploc
 
-A simple CLI app to perform geoip lookup at the console. Supports either IPv4 or IPv6. This application has been written against the MaxMind GeoCity Lite 2 binary (.mmdb) format. It has not been tested against other MaxMind distributions. To use this application, you must download the .mmdb file and use the --configure option documented below.
+A simple CLI app to perform geoip lookup at the console. Supports either IPv4 or IPv6. This application has been written against the MaxMind GeoCity Lite 2 binary (.mmdb) format. It has not been tested against other MaxMind distributions.
 
 ## installation
 
@@ -8,18 +8,18 @@ npm install -g iploc
 
 ## usage
 
-There are currently two options for running the app:
+iploc --datafile /path/to/my.mmdb --ip <IPv4 or IPv6 address>
 
-### configure
+There are currently arguments running the app:
 
-This option allows you to initially configure the app with the mmdb file you downloaded from MaxMind. The configuration will resolve relative paths to absolute.
+### --datafile
 
-**Usage:** iploc --configure /path/to/mmdb/file
+This option specifies the location the mmdb file you downloaded from MaxMind. The application will resolve relative paths to absolute.
 
-**Example:** iploc --configure ../geolite.mmdb
+### --ip
 
-### lookup
+This option specifies IP address to look up.
 
-This option looks up the IP address you provide. Simply provide the IP address, there is not command line argument.
+### Example:
 
-**Example:** iploc 8.8.8.8
+iploc --datafile ../geolite2/geolite_city.mmdb --ip 8.8.8.8

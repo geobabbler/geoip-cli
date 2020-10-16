@@ -6,55 +6,51 @@ const path = require('path');
 
 // Typescript:
 // import { Reader } from '@maxmind/geoip2-node';
+var dataloc;
+var ip;
+var { argv } = require('yargs');
 
-var ip = process.argv[2];
-if (ip){
-if (ip.toLowerCase() === "--configure"){
-    if (!fs.existsSync('./data')){
-        fs.mkdirSync('./data');
-    }
-    var datafile = process.argv[3];
-    var dest = "";
-    if (fs.existsSync(datafile)){
-        dest = path.resolve(datafile);
-        if (fs.existsSync('./data/config.txt')){
-            fs.unlinkSync('./data/config.txt');
-        }
-        fs.appendFileSync('./data/config.txt', dest);
-    }
-    else{console.log("Data file not found.");}
+if (argv["ip"]) {
+    ip = argv["ip"];
 }
-else{
-    if (fs.existsSync('./data/config.txt')){
-        var cfg = fs.readFileSync('./data/config.txt', 'UTF-8');
-        if (fs.existsSync(cfg)){
+
+if (argv["datafile"]) {
+    var p = path.resolve(argv["datafile"]);
+    if (fs.existsSync(p)) {
+        dataloc = p;
+    }
+}
+if (ip) {
+    if (dataloc) {
+        var cfg = dataloc;
+        if (fs.existsSync(cfg)) {
             Reader.open(cfg).then(reader => {
                 const response = reader.city(ip);
                 var output = [];
                 var country = "UNK";
                 var latitude = 0;
                 var longitude = 0;
-                if (response.location){
+                if (response.location) {
                     latitude = response.location.latitude;
                     longitude = response.location.longitude;
                 }
-                if (response.country){
+                if (response.country) {
                     country = response.country.isoCode;
-                } 
+                }
                 var city = "Unknown";
-                if (response.city.names){
+                if (response.city.names) {
                     city = response.city.names.en;
                 }
                 var state = "UNK";
-                if (response.subdivisions[0]){
+                if (response.subdivisions[0]) {
                     state = response.subdivisions[0].isoCode;
                 }
                 output.push(ip, latitude, longitude, country, state, city);
                 console.log(output.join(","));
             });
         }
-        else{ console.log("Application not configured.");}    }
-    else{ console.log("Application not configured.");}
+        else { console.log("Application not configured."); }
+    }
+    else { console.log("Application not configured."); }
 }
-}
-else{console.log("There's nothing for me to do!");}
+else { console.log("There's nothing for me to do!"); }
