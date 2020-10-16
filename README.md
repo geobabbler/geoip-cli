@@ -8,7 +8,7 @@ npm install -g iploc
 
 ## usage
 
-iploc --datafile /path/to/my.mmdb --ip <IPv4 or IPv6 address>
+iploc --datafile /path/to/my.mmdb --ip {IPv4 or IPv6 address}
 
 There are currently arguments running the app:
 
