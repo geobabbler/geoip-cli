@@ -1,6 +1,6 @@
 {
   "name": "iploc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "simple cli wrapper for geolite",
   "bin": "./lookup.js",
   "main": "lookup.js",
