@@ -1,6 +1,6 @@
 # iploc
 
-A simple CLI app to perform geoip lookup at the console. Supports either IPv4 or IPv6.
+A simple CLI app to perform geoip lookup at the console. Supports either IPv4 or IPv6. This application has been written against the MaxMind GeoCity Lite 2 binary (.mmdb) format. It has not been tested against other MaxMind distributions. To use this application, you must download the .mmdb file and use the --configure option documented below.
 
 ## installation
 
