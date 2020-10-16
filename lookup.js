@@ -47,7 +47,8 @@ if (ip) {
                 }
                 output.push(ip, latitude, longitude, country, state, city);
                 console.log(output.join(","));
-            });
+            })
+            .catch(error => console.log(error.message));
         }
         else { console.log("Application not configured."); }
     }
