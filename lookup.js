@@ -16,14 +16,13 @@ if (ip.toLowerCase() === "--configure"){
     var datafile = process.argv[3];
     var dest = "";
     if (fs.existsSync(datafile)){
-        var fbase = path.basename(datafile);
-        dest = './data/' + fbase;
-        fs.copyFileSync(datafile, dest);
+        dest = path.resolve(datafile);
+        if (fs.existsSync('./data/config.txt')){
+            fs.unlinkSync('./data/config.txt');
+        }
+        fs.appendFileSync('./data/config.txt', dest);
     }
-    if (fs.existsSync('./data/config.txt')){
-        fs.unlinkSync('./data/config.txt');
-    }
-    fs.appendFileSync('./data/config.txt', dest);
+    else{console.log("Data file not found.");}
 }
 else{
     if (fs.existsSync('./data/config.txt')){
